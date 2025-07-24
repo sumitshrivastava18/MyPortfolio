@@ -30,30 +30,47 @@ body {
 .scroll-container {
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
 }
 .scroll-section {
-    scroll-snap-align: start;
-    height: 100vh;
+    min-height: 100vh; /* Allow sections to grow on mobile */
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 1rem;
+    padding: 6rem 1rem; /* Add more padding for mobile */
 }
+
+/* --- Enable scroll-snap only on larger screens --- */
+@media (min-width: 768px) {
+    .scroll-container {
+        scroll-snap-type: y mandatory;
+    }
+    .scroll-section {
+        height: 100vh;
+        padding: 1rem;
+    }
+}
+
 
 /* --- Glassmorphism Card Style --- */
 .main-card {
     background-color: rgba(23, 23, 23, 0.6);
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
-    padding: 2rem;
+    padding: 1.5rem; /* Adjust padding for mobile */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+@media (min-width: 768px) {
+    .main-card {
+        padding: 2rem;
+    }
+}
+
 .main-card.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -134,7 +151,15 @@ body {
     transform: translateX(-50%);
     animation: bounce 2s infinite;
     opacity: 0.7;
+    display: none; /* Hide by default, show on desktop */
 }
+
+@media (min-width: 768px) {
+    .scroll-down-indicator {
+        display: block;
+    }
+}
+
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateX(-50%) translateY(0);
@@ -147,7 +172,7 @@ body {
     }
 }
 
-/* --- UPDATED: Profile Picture Animation --- */
+/* --- Profile Picture Animation --- */
 .profile-picture {
     animation: pulse-glow 4s infinite ease-in-out;
     transition: transform 0.3s ease;
