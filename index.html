@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumit Shrivastava | My Portfolio</title>
-    <link rel="icon" href="My_Pic.jpg" type="image/x-icon">
+    <title>Sumit Shrivastava | Portfolio</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css">
@@ -58,11 +58,12 @@
             <!-- Hero Section -->
             <section id="home" class="scroll-section">
                 <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center w-full">
+                    <!-- UPDATED: Added flex-col-reverse for better mobile layout -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center w-full flex-col-reverse">
                         <!-- Left Column: Info & Buttons -->
                         <div class="flex flex-col items-center md:items-start text-center md:text-left">
                             <span class="text-xl font-medium" style="color: var(--color-primary);">Hello, I'm</span>
-                            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white my-4">Sumit Shrivastava</h1>
+                            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white my-4">Sumit Shrivastava</h1>
                             <h2 class="text-2xl md:text-3xl font-semibold h-10">
                                 <span class="text-gray-300">A </span><span id="role-cycler">Data Analyst</span>
                             </h2>
@@ -121,9 +122,10 @@
                  <div class="container mx-auto max-w-7xl p-8">
                     <div class="main-card w-full">
                         <h2 class="text-3xl font-bold text-white mb-8 text-center">🛠️ My Skill Set</h2>
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[60vh]">
+                        <!-- UPDATED: Grid layout is now responsive -->
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             <!-- Left Column: Tools & Platforms -->
-                            <div class="category-card h-full">
+                            <div class="category-card">
                                 <h3 class="text-xl font-semibold text-white mb-6 text-center">Tools & Platforms</h3>
                                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-y-6 gap-x-4">
                                     <div class="text-center" title="VS Code"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" class="w-12 h-12 mx-auto" /><p class="mt-2 text-sm">VS Code</p></div>
@@ -136,7 +138,7 @@
                                 </div>
                             </div>
                             <!-- Middle Column: Analytics -->
-                            <div class="category-card h-full">
+                            <div class="category-card">
                                 <h3 class="text-xl font-semibold text-white mb-6 text-center">Analytics & Visualization</h3>
                                 <div class="grid grid-cols-2 gap-y-6">
                                     <div class="text-center" title="Power BI"><svg class="w-12 h-12 mx-auto" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.21 48C11.12 48 0 37.25 0 24.21V0h24.21c13.09 0 23.79 10.96 23.79 24.21S37.3 48 24.21 48z" fill="#F2C811"></path><path d="M12.11 24.21h29.82v-6.05H12.11v6.05zm0 12.1h29.82v-6.05H12.11v6.05zm0-24.21h17.9v-6.05h-17.9v6.05z" fill="#000"></path></svg><p class="mt-2 text-sm">Power BI</p></div>
@@ -146,7 +148,7 @@
                                 </div>
                             </div>
                             <!-- Right Column: Stacked Cards -->
-                            <div class="flex flex-col gap-6 h-full">
+                            <div class="flex flex-col gap-6">
                                 <div class="category-card flex-1">
                                     <h3 class="text-lg font-semibold text-white mb-4">Programming</h3>
                                     <div class="flex justify-center gap-x-6">
@@ -175,13 +177,13 @@
                         <p class="text-center text-gray-400 mb-12">Browse through my projects, categorized by technology.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                             <!-- Data Analysis Projects Category -->
-                            <a href="projects\data-analysis\data_analysis_projects.html" class="category-card">
+                            <a href="projects/data-analysis/data_analysis_projects.html" class="category-card">
                                 <i class="devicon-tableau-plain colored text-7xl mb-4"></i>
                                 <h3 class="text-2xl font-bold text-white mb-2">Data Analysis Projects</h3>
                                 <p class="text-gray-400">Dashboards and visualizations.</p>
                             </a>
                             <!-- Python Projects Category -->
-                            <a href="projects\python\python_projects.html" class="category-card">
+                            <a href="projects/python/python_projects.html" class="category-card">
                                 <i class="devicon-python-original colored text-7xl mb-4"></i>
                                 <h3 class="text-2xl font-bold text-white mb-2">Python Projects</h3>
                                 <p class="text-gray-400">Scripts, automation, and more.</p>
