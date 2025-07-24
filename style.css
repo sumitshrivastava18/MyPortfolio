@@ -1,0 +1,210 @@
+/* --- Base & Color Theme --- */
+:root {
+    --color-bg: #0a0a0a;
+    --color-text: #f5f5f5;
+    --color-gray: #a1a1aa;
+    --color-border: #404040;
+    --color-primary: #22c55e; /* Green */
+    --color-secondary: #3b82f6; /* Blue */
+    --color-accent: #ef4444; /* Red */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow: hidden;
+}
+
+/* --- Animated Background Canvas --- */
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* --- Full Page Scroll Snap Container --- */
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.scroll-section {
+    scroll-snap-align: start;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+}
+
+/* --- Glassmorphism Card Style --- */
+.main-card {
+    background-color: rgba(23, 23, 23, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.main-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Navigation Link Styling --- */
+.nav-link {
+    position: relative;
+    transition: color 0.3s;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--color-primary);
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary);
+    transition: width 0.3s ease-in-out;
+}
+.nav-link.active::after, .nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- Button and Icon Hover Effects --- */
+.action-button {
+    transition: all 0.3s ease;
+}
+.action-button-green:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.5);
+}
+.action-button-blue:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+}
+.social-icon {
+    transition: all 0.3s ease;
+}
+.social-icon:hover {
+    transform: scale(1.2);
+    color: var(--color-primary);
+}
+
+/* --- Project & Skill Card Styling --- */
+.category-card {
+    background-color: rgba(10, 10, 10, 0.7);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.category-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+/* --- Role Cycler Animation --- */
+#role-cycler {
+    transition: opacity 0.5s ease-in-out;
+    color: var(--color-primary);
+}
+.is-fading {
+    opacity: 0;
+}
+
+/* --- Scroll Down Indicator --- */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* --- UPDATED: Profile Picture Animation --- */
+.profile-picture {
+    animation: pulse-glow 4s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+.profile-picture:hover {
+    transform: scale(1.05);
+}
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+    50% { box-shadow: 0 0 35px rgba(34, 197, 94, 0.6); }
+    100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+}
+
+/* --- Hamburger Menu Styling --- */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* --- Expertise Animation --- */
+.expertise-container {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.skill-bubble {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 6s ease-in-out infinite;
+}
+.skill-bubble svg {
+    width: 32px;
+    height: 32px;
+    color: white;
+}
+.collaborate-bubble {
+    width: 120px;
+    height: 120px;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 10;
+}
+.bubble-1 { top: 0; left: 15%; animation-delay: 0s; }
+.bubble-2 { top: 60%; left: 5%; animation-delay: -2s; }
+.bubble-3 { top: 10%; right: 10%; animation-delay: -4s; }
+.bubble-4 { top: 65%; right: 15%; animation-delay: -1s; }
+.bubble-5 { top: 30%; left: 30%; animation-delay: -3s; }
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
