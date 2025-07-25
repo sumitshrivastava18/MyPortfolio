@@ -33,7 +33,7 @@ body {
     /* Scroll snapping is enabled for larger screens in the media query */
 }
 .scroll-section {
-    min-height: 100vh; /* Use min-height to allow sections to grow */
+    min-height: 100vh; /* Use min-height to allow sections to grow on mobile */
     height: auto; /* Height is auto by default for content flow */
     display: flex;
     align-items: center;
