@@ -13,7 +13,7 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
-    overflow: hidden;
+    /* Let the body scroll naturally on mobile */
 }
 
 /* --- Animated Background Canvas --- */
@@ -26,30 +26,42 @@ body {
     z-index: -1;
 }
 
-/* --- Full Page Scroll Container --- */
+/* --- Scroll Container: No special properties on mobile --- */
 .scroll-container {
-    height: 100vh;
-    overflow-y: scroll;
-    /* Scroll snapping is enabled for larger screens in the media query */
+    /* Desktop-only styles are in the media query below */
 }
+
+/* --- Section Styling for Mobile First --- */
 .scroll-section {
-    min-height: 100vh; /* Use min-height to allow sections to grow on mobile */
-    height: auto; /* Height is auto by default for content flow */
+    min-height: 100vh; /* Ensure sections take at least the full screen height */
+    height: auto; /* Allow sections to grow based on content */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 6rem 1rem; /* More padding on mobile */
+    padding: 6rem 1rem; /* Generous padding for mobile */
+    border-bottom: 1px solid var(--color-border); /* Separator for mobile */
+}
+.scroll-section:last-child {
+    border-bottom: none;
 }
 
-/* --- Enable scroll-snap only on larger screens --- */
+
+/* --- Enable scroll-snap ONLY on desktop screens --- */
 @media (min-width: 1024px) {
+    body {
+        overflow: hidden; /* Hide body scrollbar on desktop */
+    }
     .scroll-container {
+        height: 100vh;
+        overflow-y: scroll;
         scroll-snap-type: y mandatory;
     }
     .scroll-section {
         height: 100vh; /* Revert to fixed height on desktop */
         padding: 1rem;
+        border-bottom: none;
+        scroll-snap-align: start;
     }
 }
 
