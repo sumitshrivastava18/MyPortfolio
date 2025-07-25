@@ -13,6 +13,8 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
+    /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
 /* --- Prevent body scroll when mobile menu is open --- */
