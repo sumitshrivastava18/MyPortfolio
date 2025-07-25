@@ -34,14 +34,15 @@
                     <!-- Hamburger Menu Button -->
                     <div class="md:hidden">
                         <button id="menu-btn" class="z-50 block text-white focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                            <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                            <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                     </div>
                 </div>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-2/3 bg-gray-900/95 backdrop-blur-xl transform translate-x-full">
-                <nav class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
+            <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl flex items-center justify-center opacity-0 invisible">
+                <nav class="flex flex-col items-center justify-center h-full space-y-8 text-2xl text-white">
                     <a href="#home" class="nav-link mobile-link">Home</a>
                     <a href="#about" class="nav-link mobile-link">About</a>
                     <a href="#skills" class="nav-link mobile-link">Skills</a>
