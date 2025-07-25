@@ -13,7 +13,11 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
-    /* Allow natural scrolling on mobile */
+}
+
+/* --- Prevent body scroll when mobile menu is open --- */
+body.menu-open {
+    overflow: hidden;
 }
 
 /* --- Animated Background Canvas --- */
@@ -27,20 +31,20 @@ body {
 }
 
 /* --- Scroll Container --- */
-/* On mobile, this is just a standard div. On desktop, it becomes the scroll snapper. */
+/* On mobile, this is a standard div. On desktop, it becomes the scroll snapper. */
 .scroll-container {
     /* Desktop-only styles are in the media query below */
 }
 
 /* --- Section Styling (Mobile First) --- */
 .scroll-section {
-    min-height: 100vh; /* Ensures sections are at least full height */
-    height: auto; /* Allows sections to grow to fit content on mobile */
+    min-height: 100vh; /* Ensures sections feel substantial */
+    height: auto; /* Allows sections to grow to fit content */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 6rem 1rem; /* More vertical padding for mobile */
+    padding: 6rem 1rem; /* Generous padding for mobile */
     border-bottom: 1px solid var(--color-border);
 }
 .scroll-section:last-child {
@@ -65,12 +69,13 @@ body {
     }
 }
 
+
 /* --- Glassmorphism Card Style --- */
 .main-card {
     background-color: rgba(23, 23, 23, 0.7);
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
-    padding: 1.5rem;
+    padding: 1.5rem; /* Padding for mobile */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     opacity: 0;
@@ -79,9 +84,10 @@ body {
 }
 @media (min-width: 768px) {
     .main-card {
-        padding: 2rem;
+        padding: 2rem; /* More padding on desktop */
     }
 }
+
 .main-card.is-visible {
     opacity: 1;
     transform: translateY(0);
