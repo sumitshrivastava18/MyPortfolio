@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Background Canvas Animation ---
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
     let particlesArray;
@@ -81,18 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if(roleElement) setInterval(cycleRoles, 3000);
 
-    // --- Intersection Observer for Animations & Active Nav Link ---
+    // --- Intersection Observer for Active Nav Link ---
     const sections = document.querySelectorAll('.scroll-section');
     const navLinks = document.querySelectorAll('nav a.nav-link');
     
-    const observer = new IntersectionObserver((entries) => {
+    const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            const cards = entry.target.querySelectorAll('.main-card');
             if (entry.isIntersecting) {
-                cards.forEach(card => card.classList.add('is-visible'));
-
-                const id = entry.target.getAttribute('id');
-                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                const sectionId = entry.target.id;
+                const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
                 
                 navLinks.forEach(link => link.classList.remove('active'));
                 if(activeLink){
@@ -102,22 +100,81 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.6 });
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    sections.forEach(section => navObserver.observe(section));
 
-    // --- Hamburger Menu Logic ---
+
+    // --- Hamburger Menu Logic with Back Button Support ---
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
+    const body = document.body;
+    const openIcon = document.getElementById('menu-open-icon');
+    const closeIcon = document.getElementById('menu-close-icon');
 
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('translate-x-full');
-    });
+    function isMenuOpen() {
+        return !mobileMenu.classList.contains('translate-x-full');
+    }
+
+    function closeMenu() {
+        if (!isMenuOpen()) return; 
+        mobileMenu.classList.add('translate-x-full');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        body.classList.remove('overflow-hidden');
+    }
     
+    function openMenu() {
+        if (isMenuOpen()) return; 
+        mobileMenu.classList.remove('translate-x-full');
+        openIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        body.classList.add('overflow-hidden');
+        history.pushState({menu: 'open'}, 'Menu');
+    }
+
+    menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isMenuOpen()) {
+            history.back();
+        } else {
+            openMenu();
+        }
+    });
+
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full');
+            if (isMenuOpen()) {
+                history.back();
+            }
         });
     });
+
+    window.addEventListener('popstate', (event) => {
+        closeMenu();
+    });
+
+    // --- Featured Project Carousel Logic ---
+    const carouselContainer = document.getElementById('featured-carousel');
+    if (carouselContainer) {
+        const projectCards = carouselContainer.querySelectorAll('.featured-card');
+        let currentProjectIndex = 0;
+
+        function showProject(index) {
+            projectCards.forEach((card, i) => {
+                card.classList.remove('is-active');
+            });
+            if (projectCards[index]) {
+                projectCards[index].classList.add('is-active');
+            }
+        }
+
+        // Show the first project initially
+        showProject(currentProjectIndex);
+
+        // Cycle through projects every 5 seconds
+        setInterval(() => {
+            currentProjectIndex = (currentProjectIndex + 1) % projectCards.length;
+            showProject(currentProjectIndex);
+        }, 5000);
+    }
 });
