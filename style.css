@@ -1,6 +1,7 @@
 /* --- Base & Color Theme --- */
 :root {
     --color-bg: #0a0a0a;
+    --color-bg-alt: #121212; /* NEW: Alt background color */
     --color-text: #f5f5f5;
     --color-gray: #a1a1aa;
     --color-border: #404040;
@@ -18,7 +19,7 @@ body {
 }
 
 /* --- Prevent body scroll when mobile menu is open --- */
-body.menu-open {
+body.overflow-hidden {
     overflow: hidden;
 }
 
@@ -33,22 +34,29 @@ body.menu-open {
 }
 
 /* --- Scroll Container --- */
-/* On mobile, this is a standard div. On desktop, it becomes the scroll snapper. */
 .scroll-container {
     /* Desktop-only styles are in the media query below */
 }
 
 /* --- Section Styling (Mobile First) --- */
 .scroll-section {
-    min-height: 100vh; /* Ensures sections feel substantial */
-    height: auto; /* Allows sections to grow to fit content */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto;
+    display: block; 
     position: relative;
-    padding: 6rem 1rem; /* Generous padding for mobile */
+    padding: 4rem 1rem; 
     border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.3s ease-in-out;
 }
+
+/* NEW: Style for alternating sections */
+.section-alt {
+    background-color: var(--color-bg-alt);
+}
+
+#home {
+    padding-top: 6rem;
+}
+
 .scroll-section:last-child {
     border-bottom: none;
 }
@@ -56,7 +64,7 @@ body.menu-open {
 /* --- Desktop Layout Overrides --- */
 @media (min-width: 1024px) {
     body {
-        overflow: hidden; /* Disable body scroll on desktop */
+        overflow: hidden; 
     }
     .scroll-container {
         height: 100vh;
@@ -64,10 +72,17 @@ body.menu-open {
         scroll-snap-type: y mandatory;
     }
     .scroll-section {
-        height: 100vh; /* Revert to fixed height for snapping */
+        height: 100vh;
         padding: 1rem;
         border-bottom: none;
         scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent !important; /* Override alt bg on desktop */
+    }
+    #home {
+        padding-top: 1rem;
     }
 }
 
@@ -77,23 +92,16 @@ body.menu-open {
     background-color: rgba(23, 23, 23, 0.7);
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
-    padding: 1.5rem; /* Padding for mobile */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    padding: 1.5rem;
 }
 @media (min-width: 768px) {
     .main-card {
-        padding: 2rem; /* More padding on desktop */
+        padding: 2rem;
     }
 }
 
-.main-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* --- Navigation & Menu Styling --- */
 .nav-link {
@@ -118,18 +126,26 @@ body.menu-open {
     width: 100%;
 }
 
-#mobile-menu {
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-}
-
-/* --- Button and Icon Hover Effects --- */
+/* --- UPDATED: Button and Icon Hover Effects --- */
 .action-button {
     transition: all 0.3s ease;
 }
 .action-button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 25px rgba(34, 197, 94, 0.5);
 }
+.action-button-green {
+    background-color: var(--color-primary);
+}
+.action-button-green:hover {
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.6);
+}
+.action-button-blue {
+    background-color: var(--color-secondary);
+}
+.action-button-blue:hover {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+}
+
 .social-icon {
     transition: all 0.3s ease;
 }
@@ -153,6 +169,31 @@ body.menu-open {
     box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
 }
 
+/* --- Featured Project Card Carousel Styling --- */
+.featured-card {
+    display: block;
+    background-color: rgba(10, 10, 10, 0.7);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+.featured-card.is-active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+.featured-card:hover {
+    transform: scale(1.02) translateY(-8px);
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+}
+
 /* --- Role Cycler Animation --- */
 #role-cycler {
     transition: opacity 0.5s ease-in-out;
@@ -170,7 +211,7 @@ body.menu-open {
     transform: translateX(-50%);
     animation: bounce 2s infinite;
     opacity: 0.7;
-    display: none; /* Hide by default, show on desktop */
+    display: none; 
 }
 
 @media (min-width: 1024px) {
@@ -193,17 +234,22 @@ body.menu-open {
 
 /* --- Profile Picture Animation --- */
 .profile-picture {
-    animation: float-image 6s infinite ease-in-out;
+    animation: glow-pulse 4s infinite ease-in-out;
     transition: transform 0.3s ease;
 }
 .profile-picture:hover {
-    transform: scale(1.05) translateY(-10px);
+    transform: scale(1.05); 
 }
-@keyframes float-image {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 25px rgba(34, 197, 94, 0.4), 0 0 40px rgba(34, 197, 94, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(34, 197, 94, 0.7), 0 0 75px rgba(34, 197, 94, 0.5);
+    }
 }
+
 
 /* --- Expertise Animation --- */
 .expertise-container {
@@ -246,4 +292,19 @@ body.menu-open {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0px); }
+}
+
+/* --- Contact Form Styling --- */
+.contact-input {
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.7);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    transition: border-color 0.3s;
+}
+.contact-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
 }
