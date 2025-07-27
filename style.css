@@ -1,7 +1,7 @@
 /* --- Base & Color Theme --- */
 :root {
     --color-bg: #0a0a0a;
-    --color-bg-alt: #121212; /* NEW: Alt background color */
+    --color-bg-alt: #121212;
     --color-text: #f5f5f5;
     --color-gray: #a1a1aa;
     --color-border: #404040;
@@ -14,16 +14,13 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
-    /* Prevent horizontal scroll */
     overflow-x: hidden;
 }
 
-/* --- Prevent body scroll when mobile menu is open --- */
 body.overflow-hidden {
     overflow: hidden;
 }
 
-/* --- Animated Background Canvas --- */
 #background-canvas {
     position: fixed;
     top: 0;
@@ -33,12 +30,7 @@ body.overflow-hidden {
     z-index: -1;
 }
 
-/* --- Scroll Container --- */
-.scroll-container {
-    /* Desktop-only styles are in the media query below */
-}
-
-/* --- Section Styling (Mobile First) --- */
+/* --- Section Styling --- */
 .scroll-section {
     height: auto;
     display: block; 
@@ -47,16 +39,12 @@ body.overflow-hidden {
     border-bottom: 1px solid var(--color-border);
     transition: background-color 0.3s ease-in-out;
 }
-
-/* NEW: Style for alternating sections */
 .section-alt {
     background-color: var(--color-bg-alt);
 }
-
 #home {
     padding-top: 6rem;
 }
-
 .scroll-section:last-child {
     border-bottom: none;
 }
@@ -79,13 +67,12 @@ body.overflow-hidden {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: transparent !important; /* Override alt bg on desktop */
+        background-color: transparent !important;
     }
     #home {
         padding-top: 1rem;
     }
 }
-
 
 /* --- Glassmorphism Card Style --- */
 .main-card {
@@ -101,7 +88,6 @@ body.overflow-hidden {
         padding: 2rem;
     }
 }
-
 
 /* --- Navigation & Menu Styling --- */
 .nav-link {
@@ -126,7 +112,7 @@ body.overflow-hidden {
     width: 100%;
 }
 
-/* --- UPDATED: Button and Icon Hover Effects --- */
+/* --- Button and Icon Hover Effects --- */
 .action-button {
     transition: all 0.3s ease;
 }
@@ -183,6 +169,11 @@ body.overflow-hidden {
     transform: scale(0.95);
     pointer-events: none;
 }
+/* This is the only change needed */
+.featured-card img {
+    object-position: top;
+}
+
 .featured-card.is-active {
     opacity: 1;
     transform: scale(1);
@@ -203,35 +194,6 @@ body.overflow-hidden {
     opacity: 0;
 }
 
-/* --- Scroll Down Indicator --- */
-.scroll-down-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
-    opacity: 0.7;
-    display: none; 
-}
-
-@media (min-width: 1024px) {
-    .scroll-down-indicator {
-        display: block;
-    }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    40% {
-        transform: translateX(-50%) translateY(-20px);
-    }
-    60% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-}
-
 /* --- Profile Picture Animation --- */
 .profile-picture {
     animation: glow-pulse 4s infinite ease-in-out;
@@ -250,48 +212,13 @@ body.overflow-hidden {
     }
 }
 
-
-/* --- Expertise Animation --- */
-.expertise-container {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* --- Skill Icon Hover Effect --- */
+.skill-icon-container {
+    text-align: center;
+    transition: transform 0.3s ease;
 }
-.skill-bubble {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: float 6s ease-in-out infinite;
-}
-.skill-bubble svg {
-    width: 32px;
-    height: 32px;
-    color: white;
-}
-.collaborate-bubble {
-    width: 120px;
-    height: 120px;
-    font-weight: bold;
-    font-size: 1rem;
-    z-index: 10;
-}
-.bubble-1 { top: 0; left: 15%; animation-delay: 0s; }
-.bubble-2 { top: 60%; left: 5%; animation-delay: -2s; }
-.bubble-3 { top: 10%; right: 10%; animation-delay: -4s; }
-.bubble-4 { top: 65%; right: 15%; animation-delay: -1s; }
-.bubble-5 { top: 30%; left: 30%; animation-delay: -3s; }
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+.skill-icon-container:hover {
+    transform: scale(1.15);
 }
 
 /* --- Contact Form Styling --- */
