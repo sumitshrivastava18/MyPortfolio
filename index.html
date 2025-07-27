@@ -39,19 +39,38 @@
                     </div>
                 </div>
             </div>
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden fixed top-0 right-0 w-full h-screen bg-black/95 backdrop-blur-xl flex items-center justify-center transition-transform duration-300 ease-in-out transform translate-x-full">
-                <nav class="flex flex-col items-center justify-center h-full space-y-8 text-2xl text-white">
-                    <a href="#home" class="nav-link mobile-link">Home</a>
-                    <a href="#about" class="nav-link mobile-link">About</a>
-                    <a href="#skills" class="nav-link mobile-link">Skills</a>
-                    <a href="#projects" class="nav-link mobile-link">Projects</a>
-                    <a href="#experience" class="nav-link mobile-link">Experience</a>
-                    <a href="#education" class="nav-link mobile-link">Education</a>
-                    <a href="#contact" class="nav-link mobile-link">Contact</a>
-                </nav>
-            </div>
         </header>
+        
+        <!-- NEW Mobile Menu Sidebar -->
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden"></div>
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <nav class="flex flex-col space-y-4 p-6">
+                <a href="#home" class="mobile-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="mobile-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                    <span>About</span>
+                </a>
+                <a href="#skills" class="mobile-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                    <span>Skills</span>
+                </a>
+                <a href="#projects" class="mobile-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                    <span>Projects</span>
+                </a>
+                <a href="#experience" class="mobile-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 21h14a2 2 0 002-2v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7a2 2 0 002 2z" /></svg>
+                    <span>Experience</span>
+                </a>
+                <a href="#contact" class="mobile-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    <span>Contact</span>
+                </a>
+            </nav>
+        </div>
 
         <!-- Main container for scrollable sections -->
         <div class="scroll-container">
@@ -146,7 +165,7 @@
                                 <h3 class="text-xl font-semibold text-white mb-6 text-center">Analytics & Visualization</h3>
                                 <div class="grid grid-cols-2 gap-y-6">
                                     <div class="skill-icon-container"><img src="https://img.icons8.com/?size=100&id=3sGOUDo9nJ4k&format=png&color=000000" class="w-12 h-12 mx-auto" /><p class="mt-2 text-sm">Power BI</p></div>
-                                    <div class="skill-icon-container"><img src="https://img.icons8.com/?size=100&id=9Kvi1p1F0tUo&format=png&color=000000" class="w-12 h-12 mx-auto" /><p class="mt-2 text-sm">Tableau</p></div>
+                                    <div class="skill-icon-container"><img src="https://img.icons8.com/?size=100&id=BQJc3mm8NGYs&format=png&color=000000" class="w-12 h-12 mx-auto" /><p class="mt-2 text-sm">Tableau</p></div>
                                     <div class="skill-icon-container"><img src="https://img.icons8.com/?size=100&id=SruJhzn0nnLl&format=png&color=000000" class="w-12 h-12 mx-auto" /><p class="mt-2 text-sm">Looker Studio</p></div>
                                     <div class="skill-icon-container"><img src="https://img.icons8.com/?size=100&id=UECmBSgBOvPT&format=png&color=000000" class="w-12 h-12 mx-auto" /><p class="mt-2 text-sm">MS Excel</p></div>
                                 </div>
@@ -208,10 +227,10 @@
                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5v14a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0M9 9h6m-6 4h6m-6 4h4" /></svg>
                             Featured Work
                         </h2>
-                        <div id="featured-carousel" class="relative h-[450px] md:h-[400px]">
+                        <div id="featured-carousel" class="relative">
                             <!-- Featured Project 1: Uber -->
                             <a href="projects/data-analysis/data_analysis_projects.html" class="featured-card">
-                                <img src="projects/data-analysis/Images/Uber_dashboard.png" alt="Uber Dashboard Project" class="w-full h-64 object-cover object-top rounded-t-lg">
+                                <img src="projects/data-analysis/Images/Uber_dashboard.png" alt="Uber Dashboard Project" class="w-full h-64 object-cover rounded-t-lg">
                                 <div class="p-6">
                                     <h3 class="text-xl font-bold text-blue-400 mb-2">Uber Trip Analysis</h3>
                                     <p class="text-gray-400 text-sm mb-4">An interactive Power BI dashboard to visualize key metrics and optimize driver deployment based on trip patterns.</p>
@@ -226,7 +245,7 @@
                             </a>
                             <!-- Featured Project 2: HR -->
                              <a href="projects/data-analysis/data_analysis_projects.html" class="featured-card">
-                                <img src="projects/data-analysis/Images/hr_dashboard_tableau.png" alt="HR Dashboard Project" class="w-full h-64 object-cover object-top rounded-t-lg">
+                                <img src="projects/data-analysis/Images/hr_dashboard_tableau.png" alt="HR Dashboard Project" class="w-full h-64 object-cover rounded-t-lg">
                                 <div class="p-6">
                                     <h3 class="text-xl font-bold text-blue-400 mb-2">HR Attrition Analysis</h3>
                                     <p class="text-gray-400 text-sm mb-4">A dynamic Tableau dashboard to visualize the key drivers of employee churn and inform targeted retention strategies.</p>
@@ -241,7 +260,7 @@
                             </a>
                              <!-- Featured Project 3: Blinkit -->
                              <a href="projects/data-analysis/data_analysis_projects.html" class="featured-card">
-                                <img src="projects/data-analysis/Images/Blinkit_Dashboard.png" alt="Blinkit Dashboard Project" class="w-full h-64 object-cover object-top rounded-t-lg">
+                                <img src="projects/data-analysis/Images/Blinkit_Dashboard.png" alt="Blinkit Dashboard Project" class="w-full h-64 object-cover rounded-t-lg">
                                 <div class="p-6">
                                     <h3 class="text-xl font-bold text-blue-400 mb-2">Blinkit Sales Performance</h3>
                                     <p class="text-gray-400 text-sm mb-4">A comprehensive sales dashboard built in MS Excel to track performance across store types and product categories.</p>
