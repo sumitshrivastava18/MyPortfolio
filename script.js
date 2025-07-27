@@ -103,54 +103,35 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => navObserver.observe(section));
 
 
-    // --- Hamburger Menu Logic with Back Button Support ---
+    // --- Hamburger Menu Logic for Sidebar ---
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const body = document.body;
-    const openIcon = document.getElementById('menu-open-icon');
-    const closeIcon = document.getElementById('menu-close-icon');
 
-    function isMenuOpen() {
-        return !mobileMenu.classList.contains('translate-x-full');
-    }
-
-    function closeMenu() {
-        if (!isMenuOpen()) return; 
-        mobileMenu.classList.add('translate-x-full');
-        openIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        body.classList.remove('overflow-hidden');
-    }
-    
-    function openMenu() {
-        if (isMenuOpen()) return; 
-        mobileMenu.classList.remove('translate-x-full');
-        openIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
-        body.classList.add('overflow-hidden');
-        history.pushState({menu: 'open'}, 'Menu');
-    }
-
-    menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (isMenuOpen()) {
-            history.back();
+    function toggleMenu() {
+        const isOpen = mobileMenu.classList.contains('is-open');
+        if (isOpen) {
+            mobileMenu.classList.remove('is-open');
+            mobileMenuOverlay.classList.remove('is-open');
+            body.classList.remove('overflow-hidden');
         } else {
-            openMenu();
+            mobileMenu.classList.add('is-open');
+            mobileMenuOverlay.classList.add('is-open');
+            body.classList.add('overflow-hidden');
         }
-    });
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    mobileMenuOverlay.addEventListener('click', toggleMenu); // Close when clicking overlay
 
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (isMenuOpen()) {
-                history.back();
+            if (mobileMenu.classList.contains('is-open')) {
+                toggleMenu();
             }
         });
-    });
-
-    window.addEventListener('popstate', (event) => {
-        closeMenu();
     });
 
     // --- Featured Project Carousel Logic ---
@@ -160,21 +141,28 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentProjectIndex = 0;
 
         function showProject(index) {
-            projectCards.forEach((card, i) => {
+            projectCards.forEach((card) => {
                 card.classList.remove('is-active');
             });
-            if (projectCards[index]) {
-                projectCards[index].classList.add('is-active');
+
+            const activeCard = projectCards[index];
+            if (activeCard) {
+                activeCard.classList.add('is-active');
+                setTimeout(() => {
+                    carouselContainer.style.height = `${activeCard.offsetHeight}px`;
+                }, 50);
             }
         }
 
-        // Show the first project initially
         showProject(currentProjectIndex);
 
-        // Cycle through projects every 5 seconds
         setInterval(() => {
             currentProjectIndex = (currentProjectIndex + 1) % projectCards.length;
             showProject(currentProjectIndex);
         }, 5000);
+
+        window.addEventListener('resize', () => {
+            showProject(currentProjectIndex);
+        });
     }
 });
