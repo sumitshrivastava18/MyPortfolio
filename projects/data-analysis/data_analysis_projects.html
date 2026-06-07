@@ -5,87 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Analysis Projects | Sumit Shrivastava</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #f5f5f5;
-        }
+        body { background-color: #0a0a0a; color: #f5f5f5; }
         .project-card {
-            background-color: rgba(23, 23, 23, 0.8);
+            background-color: rgba(23, 23, 23, 0.6);
             border: 1px solid #404040;
-            border-radius: 0.5rem;
+            border-radius: 1.5rem;
             padding: 1.5rem;
-            transition: all 0.3s ease;
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .project-card:hover {
-            transform: translateY(-6px);
-            border-color: #22c55e; /* Green */
-            box-shadow: 0 10px 25px -5px rgba(34, 197, 94, 0.2);
-        }
-        .project-card img {
-            transition: transform 0.4s ease-out;
-        }
-        .project-card:hover img {
-            transform: scale(1.05);
-        }
-        .back-button {
-            transition: all 0.3s ease;
-        }
-        .back-button:hover {
-            transform: translateX(-4px);
+            border-color: #22c55e;
+            background-color: rgba(23, 23, 23, 0.9);
+            transform: translateY(-8px);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <div class="container mx-auto px-4 py-16 max-w-6xl">
+<body class="p-8">
+    <canvas id="background-canvas" class="fixed top-0 left-0 w-full h-full -z-10 opacity-50"></canvas>
+    <script src="../../script.js"></script>
+    <div class="container mx-auto max-w-6xl">
         <div class="flex justify-between items-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold">Data Analysis Projects</h1>
-            <a href="../../index.html#projects" class="back-button bg-blue-600 text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 inline-flex items-center">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Back
-            </a>
+            <h1 class="text-4xl font-bold text-white">Data Analysis Projects</h1>
+            <a href="../../index.html#projects" class="bg-gray-800 hover:bg-gray-700 text-white py-2 px-6 rounded-full transition">Back to Home</a>
         </div>
 
-        <!-- Project Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1: Uber Dashboard -->
-            <div class="project-card">
-                <img src="Images/Uber_dashboard.png" alt="Uber Dashboard Project" class="rounded mb-4">
-                <h3 class="text-xl font-semibold text-blue-400 mb-2">Uber Trip Analysis Dashboard</h3>
-                <p class="text-gray-400 text-sm mb-4 flex-grow">
-                    <strong>Problem:</strong> Uber needed to understand trip patterns to optimize driver allocation.
-                    <br><strong>Solution:</strong> Analyzed trip data in Power BI, creating an interactive dashboard to visualize key metrics like peak demand times and most frequent pickup/dropoff locations, providing actionable insights for driver deployment.
-                </p>
-                <div class="my-4"><span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2">Power BI</span><span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2">Data Visualization</span></div>
-                <div class="flex space-x-4"><a href="#" target="_blank" class="text-green-400 hover:text-green-300 transition-colors font-semibold">Live Demo &rarr;</a><a href="https://github.com/sumitshrivastava18/Uber-Trip-Analysis-Dashboard.git" target="_blank" class="text-green-400 hover:text-green-300 transition-colors font-semibold">Source Code &rarr;</a></div>
+            <div class="project-card group">
+                <img src="Images/Uber_dashboard.png" class="rounded-xl mb-4 transition-transform duration-500 group-hover:scale-105">
+                <h3 class="text-xl font-bold text-white mb-2">Uber Trip Analysis</h3>
+                <p class="text-gray-400 text-sm mb-4">Optimizing driver deployment using Power BI.</p>
+                <div class="flex gap-2 mb-4">
+                    <span class="bg-gray-800 text-green-400 px-3 py-1 rounded-full text-xs">Power BI</span>
+                </div>
+                <a href="https://github.com/sumitshrivastava18/Uber-Trip-Analysis-Dashboard.git" class="text-green-400 font-semibold hover:underline">Source Code &rarr;</a>
             </div>
-            <!-- Project 2: HR Dashboard -->
-            <div class="project-card">
-                <img src="Images/hr_dashboard_tableau.png" alt="HR Dashboard Project" class="rounded mb-4">
-                <h3 class="text-xl font-semibold text-blue-400 mb-2">HR Attrition Dashboard</h3>
-                <p class="text-gray-400 text-sm mb-4 flex-grow">
-                    <strong>Problem:</strong> A company needed to understand the key drivers of employee churn.
-                    <br><strong>Solution:</strong> Developed a dynamic Tableau dashboard to visualize metrics like attrition by department and performance. The dashboard identified the Sales department as a high-risk area, enabling targeted retention strategies.
-                </p>
-                <div class="my-4"><span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2">Tableau</span><span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2">Data Analysis</span></div>
-                <div class="flex space-x-4"><a href="#" target="_blank" class="text-green-400 hover:text-green-300 transition-colors font-semibold">Live Demo &rarr;</a><a href="https://github.com/sumitshrivastava18/HR-Dashboard.git" target="_blank" class="text-green-400 hover:text-green-300 transition-colors font-semibold">Source Code &rarr;</a></div>
+            <div class="project-card group">
+                <img src="Images/hr_dashboard_tableau.png" class="rounded-xl mb-4 transition-transform duration-500 group-hover:scale-105">
+                <h3 class="text-xl font-bold text-white mb-2">HR Attrition Analysis</h3>
+                <p class="text-gray-400 text-sm mb-4">Dynamic churn analysis using Tableau.</p>
+                <div class="flex gap-2 mb-4">
+                    <span class="bg-gray-800 text-green-400 px-3 py-1 rounded-full text-xs">Tableau</span>
+                </div>
+                <a href="https://github.com/sumitshrivastava18/HR-Dashboard.git" class="text-green-400 font-semibold hover:underline">Source Code &rarr;</a>
             </div>
-            <!-- NEW Project 3: Blinkit Dashboard -->
-            <div class="project-card">
-                <img src="Images/Blinkit_Dashboard.png" alt="Blinkit Dashboard Project" class="rounded mb-4">
-                <h3 class="text-xl font-semibold text-blue-400 mb-2">Blinkit Sales Dashboard</h3>
-                <p class="text-gray-400 text-sm mb-4 flex-grow">
-                    <strong>Problem:</strong> Management required a clear overview of sales performance across various store and product types.
-                    <br><strong>Solution:</strong> Created a comprehensive dashboard in MS Excel with PivotTables and charts. The final product highlighted that 'Supermarket Type 1' outlets were top performers, guiding inventory and marketing decisions.
-                </p>
-                <div class="my-4"><span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2">MS Excel</span><span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2">Sales Analytics</span></div>
-               <div class="flex space-x-4"><a href="#" target="_blank" class="text-green-400 hover:text-green-300 transition-colors font-semibold">Live Demo &rarr;</a><a href="https://github.com/sumitshrivastava18/Blinkit-Sales-Dashboard.git" target="_blank" class="text-green-400 hover:text-green-300 transition-colors font-semibold">Source Code &rarr;</a></div>
+            <div class="project-card group">
+                <img src="Images/Blinkit_Dashboard.png" class="rounded-xl mb-4 transition-transform duration-500 group-hover:scale-105">
+                <h3 class="text-xl font-bold text-white mb-2">Blinkit Sales Dashboard</h3>
+                <p class="text-gray-400 text-sm mb-4">Sales analytics and performance tracking in Excel.</p>
+                <div class="flex gap-2 mb-4">
+                    <span class="bg-gray-800 text-green-400 px-3 py-1 rounded-full text-xs">MS Excel</span>
+                </div>
+                <a href="https://github.com/sumitshrivastava18/Blinkit-Sales-Dashboard.git" class="text-green-400 font-semibold hover:underline">Source Code &rarr;</a>
             </div>
         </div>
     </div>
